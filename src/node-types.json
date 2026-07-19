@@ -1,0 +1,45 @@
+[
+  {
+    "type": "program",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "todo",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "todo",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "todo_body",
+          "named": true
+        },
+        {
+          "type": "todo_token",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "todo_body",
+    "named": true
+  },
+  {
+    "type": "todo_token",
+    "named": true
+  }
+]

@@ -2,17 +2,28 @@
   "targets": [
     {
       "target_name": "tree_sitter_TODO_binding",
+      "dependencies": [
+        "<!(node -p \"require('node-addon-api').targets\"):node_addon_api_except"
+      ],
       "include_dirs": [
-        "<!(node -e \"require('nan')\")",
         "src"
       ],
       "sources": [
+        "bindings/node/binding.cc",
         "src/parser.c",
-        "src/binding.cc",
-        "src/scanner.cc"
+        "src/scanner.c"
       ],
-      "cflags_c": [
-        "-std=c99",
+      "conditions": [
+        ["OS!='win'", {
+          "cflags_c": [
+            "-std=c11"
+          ]
+        }, {
+          "cflags_c": [
+            "/std:c11",
+            "/utf-8"
+          ]
+        }]
       ]
     }
   ]

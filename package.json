@@ -1,22 +1,54 @@
 {
-  "author": "Benjamin Gray",
-  "main": "./index.js",
-  "version": "0.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Aerijo/tree-sitter-todo"
-  },
-  "keywords": [],
+  "name": "@lumine-code/tree-sitter-todo",
+  "author": "lumine-code",
+  "version": "1.0.0",
+  "description": "A Tree-sitter grammar for TODO-style annotations in text.",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "repository": "https://github.com/lumine-code/tree-sitter-todo",
+  "bugs": "https://github.com/lumine-code/tree-sitter-todo/issues",
+  "homepage": "https://github.com/lumine-code/tree-sitter-todo",
   "license": "MIT",
-  "name": "tree-sitter-todo",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@11.16.0",
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "todo"
+  ],
+  "files": [
+    "*.wasm",
+    "bindings/node",
+    "grammar.js",
+    "src",
+    "tree-sitter.json",
+    "binding.gyp"
+  ],
   "dependencies": {
-    "nan": "^2.11.1"
+    "node-addon-api": "^8.9.0",
+    "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.13.10"
+    "tree-sitter-cli": "0.26.11"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.25.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
   },
   "scripts": {
-    "build": "tree-sitter generate && node-gyp build",
-    "test": "tree-sitter test"
+    "build": "tree-sitter generate && node-gyp rebuild",
+    "build:wasm": "tree-sitter build --wasm",
+    "generate": "tree-sitter generate",
+    "install": "node-gyp-build",
+    "test": "node --test bindings/node/binding_test.js && tree-sitter test"
   }
 }

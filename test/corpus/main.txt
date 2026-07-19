@@ -95,6 +95,7 @@ $TODO
 Not valid initial characters TODO
 =====
 FTODO
+xTODO
 1TODO
 _TODO
 -----

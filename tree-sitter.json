@@ -1,0 +1,27 @@
+{
+  "grammars": [
+    {
+      "name": "TODO",
+      "camelcase": "TODO",
+      "scope": "text.todo",
+      "path": ".",
+      "file-types": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "A Tree-sitter grammar for TODO-style annotations in text.",
+    "authors": [
+      {
+        "name": "lumine-code"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/lumine-code/tree-sitter-todo"
+    }
+  },
+  "bindings": {
+    "node": true
+  }
+}
