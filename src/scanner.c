@@ -84,11 +84,13 @@ static bool scan_todo(TSLexer *lexer) {
 }
 
 static bool scan_todo_body(TSLexer *lexer) {
-  if (lexer->lookahead == '\n') {
+  if (lexer->lookahead == '\r' || lexer->lookahead == '\n') {
     return return_as_text(lexer);
   }
 
-  while (lexer->lookahead && lexer->lookahead != '\n') {
+  while (
+    lexer->lookahead && lexer->lookahead != '\r' && lexer->lookahead != '\n'
+  ) {
     lexer->advance(lexer, false);
   }
 
