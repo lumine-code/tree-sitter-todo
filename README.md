@@ -1,4 +1,4 @@
-# @lumine-code/tree-sitter-todo
+# tree-sitter-todo
 
 A Tree-sitter grammar for TODO-style annotations in text.
 
