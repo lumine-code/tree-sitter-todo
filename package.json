@@ -17,9 +17,12 @@
   },
   "packageManager": "npm@11.16.0",
   "keywords": [
-    "parser",
     "tree-sitter",
-    "todo"
+    "todo",
+    "fixme",
+    "annotation",
+    "grammar",
+    "parser"
   ],
   "files": [
     "*.wasm",
