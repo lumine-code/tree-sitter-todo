@@ -6,8 +6,9 @@ A Tree-sitter grammar for TODO-style annotations in text.
 
 - **Grammars**: provides Tree-sitter grammars.
 - **TODO markers**: recognizes common annotations including `TODO`, `FIXME`, `NOTE`, `BUG`, and `WARNING`.
-- **Word boundaries**: distinguishes standalone annotations from markers embedded within identifiers.
+- **Word boundaries**: distinguishes standalone annotations from markers embedded within ASCII identifiers.
 - **Portable scanner**: supports native and WebAssembly builds through a C external scanner.
+- **Incremental parsing**: batches ordinary text into small chunks while keeping each identifier intact.
 
 ## Installation
 
@@ -31,7 +32,7 @@ const tree = parser.parse("TODO: document this");
 ```sh
 npm install
 npm test
-npm run build:wasm
+npm run test:wasm
 ```
 
 ## Contributing

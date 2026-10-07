@@ -9,9 +9,9 @@
 #define LANGUAGE_VERSION 15
 #define STATE_COUNT 7
 #define LARGE_STATE_COUNT 5
-#define SYMBOL_COUNT 9
+#define SYMBOL_COUNT 7
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 5
+#define TOKEN_COUNT 4
 #define EXTERNAL_TOKEN_COUNT 3
 #define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 2
@@ -20,37 +20,31 @@
 #define SUPERTYPE_COUNT 0
 
 enum ts_symbol_identifiers {
-  aux_sym__text_token1 = 1,
-  sym_todo_token = 2,
-  sym_todo_body = 3,
-  sym__other_text = 4,
-  sym_program = 5,
-  sym_todo = 6,
-  sym__text = 7,
-  aux_sym_program_repeat1 = 8,
+  sym_todo_token = 1,
+  sym_todo_body = 2,
+  sym__other_text = 3,
+  sym_program = 4,
+  sym_todo = 5,
+  aux_sym_program_repeat1 = 6,
 };
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [aux_sym__text_token1] = "_text_token1",
   [sym_todo_token] = "todo_token",
   [sym_todo_body] = "todo_body",
   [sym__other_text] = "_other_text",
   [sym_program] = "program",
   [sym_todo] = "todo",
-  [sym__text] = "_text",
   [aux_sym_program_repeat1] = "program_repeat1",
 };
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [aux_sym__text_token1] = aux_sym__text_token1,
   [sym_todo_token] = sym_todo_token,
   [sym_todo_body] = sym_todo_body,
   [sym__other_text] = sym__other_text,
   [sym_program] = sym_program,
   [sym_todo] = sym_todo,
-  [sym__text] = sym__text,
   [aux_sym_program_repeat1] = aux_sym_program_repeat1,
 };
 
@@ -58,10 +52,6 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   [ts_builtin_sym_end] = {
     .visible = false,
     .named = true,
-  },
-  [aux_sym__text_token1] = {
-    .visible = false,
-    .named = false,
   },
   [sym_todo_token] = {
     .visible = true,
@@ -81,10 +71,6 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [sym_todo] = {
     .visible = true,
-    .named = true,
-  },
-  [sym__text] = {
-    .visible = false,
     .named = true,
   },
   [aux_sym_program_repeat1] = {
@@ -116,26 +102,11 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
+      ACCEPT_TOKEN(ts_builtin_sym_end);
       if (eof) ADVANCE(1);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(2);
-      if (lookahead != 0 &&
-          (lookahead < 'A' || 'Z' < lookahead)) ADVANCE(3);
       END_STATE();
     case 1:
       ACCEPT_TOKEN(ts_builtin_sym_end);
-      END_STATE();
-    case 2:
-      ACCEPT_TOKEN(aux_sym__text_token1);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(2);
-      if (lookahead != 0 &&
-          (lookahead < 'A' || 'Z' < lookahead)) ADVANCE(3);
-      END_STATE();
-    case 3:
-      ACCEPT_TOKEN(aux_sym__text_token1);
-      if (lookahead != 0 &&
-          (lookahead < 'A' || 'Z' < lookahead)) ADVANCE(3);
       END_STATE();
     default:
       return false;
@@ -155,7 +126,6 @@ static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(0)] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [aux_sym__text_token1] = ACTIONS(1),
     [sym_todo_token] = ACTIONS(1),
     [sym_todo_body] = ACTIONS(1),
     [sym__other_text] = ACTIONS(1),
@@ -163,34 +133,27 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(1)] = {
     [sym_program] = STATE(6),
     [sym_todo] = STATE(2),
-    [sym__text] = STATE(2),
     [aux_sym_program_repeat1] = STATE(2),
     [ts_builtin_sym_end] = ACTIONS(3),
-    [aux_sym__text_token1] = ACTIONS(5),
-    [sym_todo_token] = ACTIONS(7),
-    [sym__other_text] = ACTIONS(5),
+    [sym_todo_token] = ACTIONS(5),
+    [sym__other_text] = ACTIONS(7),
   },
   [STATE(2)] = {
     [sym_todo] = STATE(3),
-    [sym__text] = STATE(3),
     [aux_sym_program_repeat1] = STATE(3),
     [ts_builtin_sym_end] = ACTIONS(9),
-    [aux_sym__text_token1] = ACTIONS(11),
-    [sym_todo_token] = ACTIONS(7),
+    [sym_todo_token] = ACTIONS(5),
     [sym__other_text] = ACTIONS(11),
   },
   [STATE(3)] = {
     [sym_todo] = STATE(3),
-    [sym__text] = STATE(3),
     [aux_sym_program_repeat1] = STATE(3),
     [ts_builtin_sym_end] = ACTIONS(13),
-    [aux_sym__text_token1] = ACTIONS(15),
-    [sym_todo_token] = ACTIONS(18),
-    [sym__other_text] = ACTIONS(15),
+    [sym_todo_token] = ACTIONS(15),
+    [sym__other_text] = ACTIONS(18),
   },
   [STATE(4)] = {
     [ts_builtin_sym_end] = ACTIONS(21),
-    [aux_sym__text_token1] = ACTIONS(21),
     [sym_todo_token] = ACTIONS(21),
     [sym_todo_body] = ACTIONS(23),
     [sym__other_text] = ACTIONS(21),
@@ -199,32 +162,31 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
 
 static const uint16_t ts_small_parse_table[] = {
   [0] = 1,
-    ACTIONS(25), 4,
+    ACTIONS(25), 3,
       sym_todo_token,
       sym__other_text,
       ts_builtin_sym_end,
-      aux_sym__text_token1,
-  [7] = 1,
+  [6] = 1,
     ACTIONS(27), 1,
       ts_builtin_sym_end,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
   [SMALL_STATE(5)] = 0,
-  [SMALL_STATE(6)] = 7,
+  [SMALL_STATE(6)] = 6,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
   [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_program, 0, 0, 0),
-  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
+  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
+  [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
   [9] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_program, 1, 0, 0),
   [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [13] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 2, 0, 0),
-  [15] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
-  [18] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [15] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [18] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
   [21] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_todo, 1, 0, 0),
   [23] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
   [25] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_todo, 2, 0, 0),

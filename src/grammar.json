@@ -13,56 +13,34 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_text"
+            "name": "_other_text"
           }
         ]
       }
     },
     "todo": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "todo_token"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "todo_body"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_text": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[^A-Z]+"
+          "type": "SYMBOL",
+          "name": "todo_token"
         },
         {
-          "type": "SYMBOL",
-          "name": "_other_text"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "todo_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     }
   },
-  "extras": [
-    {
-      "type": "PATTERN",
-      "value": "\\s"
-    }
-  ],
+  "extras": [],
   "conflicts": [],
   "precedences": [],
   "externals": [
