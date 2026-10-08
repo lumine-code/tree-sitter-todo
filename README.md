@@ -2,6 +2,8 @@
 
 A Tree-sitter grammar for TODO-style annotations in text.
 
+Fork of [Aerijo/tree-sitter-todo](https://github.com/Aerijo/tree-sitter-todo).
+
 ## Features
 
 - **Grammars**: provides Tree-sitter grammars.
